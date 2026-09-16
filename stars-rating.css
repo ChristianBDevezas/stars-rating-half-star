@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    font-family: "Poppins", sans-serif;
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(35, 32, 32);
+    border: 2px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.stars {
+    height: 300px;
+    width: clamp(400px, 50%, 500px);
+    /* width: clamp(minimum, preferred, maximum); */
+    background-color: rgb(57, 55, 55);
+    border-radius: 7px;
+    border: 2px solid white;
+    box-shadow: 0 0 5px #4189e7, 0 0 10px #4189e7, 0 0 20px #4189e7, 0 0 50px #4189e7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stars__item {
+    display: grid;
+    grid-template-areas: ".";
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    cursor: pointer;
+}
+
+.stars__item .points {
+    display: grid;
+    grid-template-areas: ". .";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+
+    grid-column-start: 1;
+    grid-column-end: span 1;
+    grid-row-start: 1;
+    grid-row-end: span 1;
+    opacity: .2;
+    z-index: 1000;
+    order: 0;
+}
+
+.stars__item .point {
+    grid-column-end: span 1;
+    grid-row-end: span 1;
+    opacity: 1;
+    z-index: 1000;
+    order: 0;
+}
+
+.stars__item .point.left {
+    grid-column-start: 1;
+    grid-row-start: 1;
+}
+
+.stars__item .point.right {
+    grid-column-start: 2;
+    grid-row-start: 1;
+}
+
+.stars__item i {
+    grid-column-start: 1;
+    grid-column-end: span 2;
+    grid-row-start: 1;
+    grid-row-end: span 1;
+    opacity: 0;
+}
+.stars__item i.show { opacity: 1; }
+
+.stars__item i {
+    margin-right: 7px;
+    /* cursor: pointer; */
+}
+.stars__item i:nth-child(1) { order: 0; z-index: 1; opacity: .8;}
+.stars__item i:nth-child(2) { order: 0; z-index: 2; }
+.stars__item i:nth-child(3) { order: 0; z-index: 3; }
+
+/*add color and shadow*/
+.stars__item i.color {
+    color: yellow;
+    text-shadow: 0 0 7px #ffd000, 0 0 13px #ff6c00;
+}
+
+/* .stars__item i.point-half.show {
+    height: 100% !important;
+    color: transparent;
+    background: linear-gradient(to right, yellow 50%, transparent 50%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    text-shadow: none;
+} */
+.stars__item i.point-half.show::before {
+    color: yellow;
+    clip-path: inset(-20% 50% 0 0);
+    text-shadow: none;
+}
+
+/*display counter*/
+.counter {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    color: #eeeaea;
+}

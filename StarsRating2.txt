@@ -1,0 +1,41 @@
+
+1) function checkLocalStorage, linha 7:
+const savedRating = Array.isArray(savedStars) ? (savedStars.length ? savedStars[savedStars.length - 1] + 1 : 0) : savedStars;
+
+A variável savedRating recebe o valor da avaliação salva anteriormente.
+
+Como savedStars normalmente é um número lido do localStorage, savedRating recebe diretamente esse número, por exemplo:
+savedStars = 3.5;
+savedRating = 3.5;
+
+Se savedStars for um array:
+array vazio: recebe 0;
+array com valores: pega o último índice e soma 1.
+
+
+2) if(index < Math.floor(rating)) {
+            star.querySelector(".point-full").classList.add("show");
+        }
+index é a posição da estrela, começando em 0.
+Math.floor(rating) arredonda a avaliação para baixo.
+Para cada estrela cujo índice seja menor que esse valor, a classe "show" é adicionada a .point-full.
+
+if(index === Math.floor(rating) && rating % 1 === 0.5) {
+            star.querySelector(".point-half").classList.add("show");
+        }
+
+Exemplo com rating = 3.5:
+índices 0, 1 e 2 recebem estrela cheia;
+a estrela de índice 3 será tratada pelo próximo if como meia estrela.
+
+
+3) const currentIndex = [...starItems].indexOf(starsItemElement);
+A variável currentIndex recebe o índice da estrela clicada dentro da lista starItems.
+
+Se starsItemElement não for encontrado, currentIndex recebe -1.
+
+
+4) const rating = currentIndex + (starTarget.classList.contains("left") ? 0.5 : 1);
+currentIndex: posição da estrela clicada, começando em 0;
+0.5, se o lado esquerdo foi clicado;
+1, se o lado direito foi clicado.
